@@ -8,7 +8,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         // web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        commands: __DIR__ . '/../routes/console.php',
         // health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
@@ -25,8 +25,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $schedule->command('nameserver:check-record')
             ->everyFiveMinutes()
             ->withoutOverlapping();
-        
+
         $schedule->command('domain:write-csv')
-            ->dailyAt('08:00');
+            ->dailyAt('07:00');
+
+        $schedule->command('sync:csv-static')
+            ->dailyAt('07:00');
     })
     ->create();
