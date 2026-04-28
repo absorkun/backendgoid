@@ -10,8 +10,8 @@ use Throwable;
 class RecordNameserverService
 {
     private const int TIMEOUT_SECONDS_REQUEST = 10;
-    private const int LIMIT_DOMAINS_PER_RUN = 100;
-    private const int CHUNK_SIZE = 50;
+    private const int LIMIT_DOMAINS_PER_RUN = 300;
+    private const int CHUNK_SIZE = 100;
 
     public function handle(): void
     {

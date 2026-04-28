@@ -30,6 +30,6 @@ return Application::configure(basePath: dirname(__DIR__))
             ->dailyAt('07:00');
 
         $schedule->command('sync:csv-static')
-            ->dailyAt('07:00');
+            ->dailyAt('07:10');
     })
     ->create();
