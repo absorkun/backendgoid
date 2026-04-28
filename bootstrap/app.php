@@ -19,11 +19,14 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withSchedule(function (Schedule $schedule): void {
         $schedule->command('website:check-active')
-            ->everyFifteenMinutes()
+            ->everyFiveMinutes()
             ->withoutOverlapping();
 
         $schedule->command('nameserver:check-record')
-            ->everyFifteenMinutes()
+            ->everyFiveMinutes()
             ->withoutOverlapping();
+        
+        $schedule->command('domain:write-csv')
+            ->dailyAt('08:00');
     })
     ->create();
