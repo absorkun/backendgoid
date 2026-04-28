@@ -8,7 +8,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         // web: __DIR__.'/../routes/web.php',
-        // commands: __DIR__.'/../routes/console.php',
+        commands: __DIR__.'/../routes/console.php',
         // health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
@@ -17,12 +17,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })
-    ->withSchedule(function (Schedule $schdule): void {
-        $schdule->command('website:check-active')
+    ->withSchedule(function (Schedule $schedule): void {
+        $schedule->command('website:check-active')
             ->everyFifteenMinutes()
             ->withoutOverlapping();
 
-        $schdule->command('nameserver:check-record')
+        $schedule->command('nameserver:check-record')
             ->everyFifteenMinutes()
             ->withoutOverlapping();
     })
